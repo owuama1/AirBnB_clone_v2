@@ -3,6 +3,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+
 def do_pack():
     """
     Generates a .tgz archive from the contents of the web_static folder.
@@ -32,11 +33,13 @@ def do_pack():
 
     # Get the size of the archive
     archive_size = os.path.getsize(archive_path)
-    
+
     # Print final message
-    print("web_static packed: {} -> {}Bytes".format(archive_path, archive_size))
-    
+    print("web_static packed: {} -> {}Bytes"
+          .format(archive_path, archive_size))
+
     return archive_path
+
 
 if __name__ == "__main__":
     result = do_pack()
