@@ -14,7 +14,7 @@ def do_pack():
     """
     Generates a .tgz archive from the contents of the web_static folder.
     All archives are stored in the versions folder.
-    The archive name is web_static_<year><month><day><hour><minute><second>.tgz.
+    archive name is web_static_<year><month><day><hour><minute><second>.tgz.
     The function returns the archive path if the archive has been correctly
     generated, otherwise it returns None.
     """
@@ -24,7 +24,8 @@ def do_pack():
         file_path = "versions/web_static_{}.tgz".format(now)
         local("tar -czvf {} web_static".format(file_path))
         return file_path
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 
