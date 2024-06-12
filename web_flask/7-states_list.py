@@ -4,8 +4,24 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+import os
+from sqlalchemy import create_engine
 
 app = Flask(__name__)
+
+# Path to the SQL file
+sql_file = '7-states_list.sql'
+
+# Read the SQL file
+with open(sql_file, 'r') as file:
+    sql_script = file.read()
+
+# Create an engine
+engine = create_engine('mysql+mysqldb://hbnb_dev:hbnb_dev_pwd@localhost/hbnb_dev_db')
+
+# Execute the SQL script
+with engine.connect() as connection:
+    connection.execute(sql_script)
 
 
 @app.route('/states_list', strict_slashes=False)
