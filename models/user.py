@@ -3,6 +3,7 @@
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
+from models.__init__ import storage_type  # Import storage_type
 
 
 class User(BaseModel, Base):
